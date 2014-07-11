@@ -1,0 +1,320 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Capítulo: Entrada e saída
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter{Entrada e saída}
+
+Entrada e saída se refere à comunicação do programa, tanto com o usuário quanto com arquivos em disco. 
+Duas funções que podem ser usadas para fazer entrada e saída com o usuário pelo console são \PRINTF\ e \SCANF. 
+Para fazer entrada e saída com arquivos, pode-se usar \FPRINTF\ e \FSCANF. 
+Para usar qualquer uma dessas funções, adicionar a seguinte linha ao início do código:
+
+\begin{lstlisting}
+#include <stdio.h> 
+\end{lstlisting}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Seção: printf
+
+\section{printf}
+\label{sec:printf}
+
+\PRINTF\ não é uma palavra reservada como \WHILE, e sim uma função. \PRINTF\ espera como primeiro parâmetro uma string, como nos exemplos abaixo.
+
+\begin{lstlisting}
+printf("Hello world\n");
+printf("bom dia");
+printf("Pressione enter para continuar...\n");
+\end{lstlisting}
+
+Observe que strings ficam entre aspas duplas. Ao final de algumas das strings acima está o caractere especial '\textbackslash n'. Esse caractere representa um pulo para a linha seguinte. Sempre adicionar esse caractere ao final quando a string contiver uma mensagem que deve aparecer isolada em uma linha. 
+
+
+\begin{table}
+\centering
+  \begin{tabular}{|l|l|l|}
+    \hline
+        Caractere               & Valor ASCII & Representação \\
+    \hline
+        Pula linha              & 10          & \verb|\n|     \\
+        Tabulação               & 9           & \verb|\t|     \\
+        {\it Beep}              & 7           & \verb|\a|     \\
+        {\it Backslash}         & 92          & \verb|\\|     \\
+        Aspas duplas            & 34          & \verb|\"|     \\
+        Símbolo de percentagem  & 37          & \verb|%%|     \\
+    \hline
+  \end{tabular}
+  \caption{Caracteres especiais do C}
+  \label{tab:chars}
+\end{table}
+
+
+Além do pulo de linha, existem outros caracteres especiais que \PRINTF\ reconhece, como pode ser visto na Tabela~\ref{tab:chars}
+
+\pagebreak
+
+Para ser mais versátil, \PRINTF\ pode imprimir valores de expressões no meio da mensagem. Para isso é necessário colocar na string um especificador de formato no ponto em que o valor deve aparecer, e adicionar como parâmetro a expressão a ser impressa. Especificadores de formato são precedidos pelo símbolo \%\ e servem para definir como interpretar o valor da expressão, ou seja, se é um valor inteiro, real, caractere etc. Observe o exemplo abaixo.
+
+\begin{lstlisting}
+printf("Um inteiro ocupa %d bytes\n", sizeof(int));
+printf("PI vale %f\n", 3.141592653589793238462);
+\end{lstlisting}
+
+Cada uma das strings possui um especificador de formato. A primeira possui um {\tt \%d} 
+para imprimir um número inteiro e a segunda possui um {\tt \%f}
+para imprimir um número real.
+A saída do exemplo acima será a seguinte:\\
+\\
+{\tt
+Um inteiro ocupa 4 bytes\\
+PI vale 3.141593\\
+}
+
+Por padrão o {\tt \%f} imprime o número real com seis casas decimais, mas esse comportamento pode ser modificado colocando logo depois do símbolo {\tt \%} um ponto seguido do número de casas decimais desejado, como a seguir.
+
+\begin{lstlisting}
+printf("PI vale %.10f\n", 3.141592653589793238462);
+\end{lstlisting}
+
+cuja saída será\\
+\\
+{\tt
+PI vale 3.1415926536\\
+}
+
+O formato de números inteiros também pode ser modificado. Colocando um número {\tt n} de dígitos entre o {\tt \%} e o {\tt d}, fará cada inteiro ocupar {\tt n} espaços. Isso é útil para se imprimir tabelas onde o dígito menos significativo deve ficar alinhado à direita. Para completar o inteiro com zeros à esquerda, colocar um zero entre o {\tt \%} e o número de dígitos completará o número impresso com zeros à esquerda até que ocupe o tamanho desejado. Observe os exemplos abaixo e compare suas saídas.
+
+\pagebreak
+
+\begin{lstlisting}
+printf("Um inteiro ocupa %d bytes\n", sizeof(int));
+printf("Um inteiro ocupa %6d bytes\n", sizeof(int));
+printf("Um inteiro ocupa %06d bytes\n", sizeof(int));
+\end{lstlisting}
+
+terão como saída respectivamente
+
+\begin{verbatim}
+Um inteiro ocupa 4 bytes
+Um inteiro ocupa      4 bytes
+Um inteiro ocupa 000004 bytes
+\end{verbatim}
+
+
+\begin{table}
+\centering
+  \begin{tabular}{|l|l|l|}
+    \hline
+        Saída                      & Especificador & Exemplo            \\
+    \hline
+        Inteiro decimal                      & \%d           & 45                 \\
+        Inteiro decimal \LONGINT             & \%ld          & 12345678901234     \\
+        Inteiro hexadecimal                  & \%x           & f3 ou F3           \\
+                                             & \%X           & f3 ou F3           \\
+        Número real \FLOAT                   & \%f           & 3.141593           \\
+        Número real \DOUBLE                  & \%lf          & 3.141593           \\
+        Número real em notação científica    & \%e           & 1.000000e+09       \\
+                                             & \%E           & 1.000000E+09       \\
+        Caractere                            & \%c           & a                  \\
+        String                               & \%s           & Hello              \\
+        Endereço de ponteiro                 & \%p           & 0x7fffec2e33a8     \\
+    \hline
+  \end{tabular}
+  \caption{Especificadores de formato do C}
+  \label{tab:format}
+\end{table}
+
+Em uma mesma string pode haver vários especificadores de formato, bastando que, para cada um dos especificadores, deve haver um valor correspondente como parâmetro. Observe o exemplo abaixo. Existem dois especificadores de formato. O primeiro será substituído pelo valor de {\tt val1} e o segundo, pelo valor de {\tt val2}.
+
+\begin{lstlisting}
+int val1 = 33;
+float val2 = 1.23;
+printf("A variavel inteira vale %d e a variavel real vale %f\n", val1, val2);
+\end{lstlisting}
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Seção: scanf
+
+\section{scanf}
+\label{sec:scanf}
+
+A chamada a \SCANF\ é semelhante à chamada ao \PRINTF. O primeiro parâmetro também é uma string, mas deve possuir um especificador de formato. Os demais parãmetros são os endereços das posições de memória onde os dados serão gravados. É recomendável porém usar uma chamada \SCANF\ para cada valor a ser lido. Para passar o endereço de memória, é necessário preceder a variável pelo símbolo {\tt \%}.
+
+\begin{lstlisting}
+int i;
+scanf("%d", &i);
+float x;
+scanf("%f", &x);
+char letra;
+scanf("%c", &letra);
+\end{lstlisting}
+
+\begin{itemize}
+
+\item \SCANF\ retorna o número de valores lidos com sucesso. Idealmente deve-se usar esse valor para testar se a leitura foi bem sucedida.
+
+\item Segue um exemplo de código com \SCANF.
+
+\begin{lstlisting}
+#include <stdio.h> 
+#include <cstdlib> 
+int main (void)
+{
+  int result;
+  float userfloat;
+  printf("Digite um numero real:\n");
+  result = scanf("%f", &userfloat);
+  printf("result = %d, real digitado = %f\n", result, userfloat);
+  system("pause");
+}
+\end{lstlisting}
+
+\item No exemplo acima, {\tt userfloat} armazena o real digitado pelo usuário. A variável {\tt result} será igual a 1 caso a leitura seja bem sucedida, e 0 caso contrário.
+
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Seção: sscanf
+
+\section{sscanf}
+\label{sec:sscanf}
+
+\SCANF\ pode não funcionar corretamente quando o usuário digita valores de tipos diferentes do esperado. Uma maneira de contornar isso é armazenando a string em uma variável intermediária antes de fazer a leitura. Nesse caso, a leitura é feita com \SSCANF, uma versão alternativa de \SCANF\ que lê dados de strings.
+
+\begin{lstlisting}
+#include <stdio.h> 
+#include <cstdlib> 
+int main (void)
+{
+  int result;
+  float userfloat;
+  char line[256];
+  printf("Digite um numero real:\n");
+  gets(line);
+  result = sscanf(line, "%f", &userfloat);
+  printf("result = %d, real digitado = %f\n", result, userfloat);
+  system("pause");
+}
+\end{lstlisting}
+
+\begin{itemize}
+
+\item No exemplo acima, podemos observar uma nova variável chamada {\tt line}, que armazenará o texto digitado pelo usuário. \GETS\ lê o texto digitado e o armazena em {\tt line}, que é passado como parâmetro para \SSCANF. As demais partes do código permanecem como no exemplo da Seção~\ref{sec:scanf}.
+
+\end{itemize}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Seção: fscanf
+
+\section{fscanf}
+\label{sec:fscanf}
+
+\FSCANF é uma função que pode ser usada para leitura de dados de arquivos. Recebe um parâmetro a mais que \SCANF: o ponteiro para o arqivo a ser lido.
+
+\begin{itemize}
+
+\item Para obter o ponteiro para o arquivo, usar a função \FOPEN. No exemplo abaixo, {\tt fp} é a variável que armazenará o ponteiro para o arquivo. O primeiro parâmetro é uma string que contém o nome do arquivo a ser aberto. Neste exemplo é {\tt arquivo.txt} mas poderia ser qualquer outro. O segundo parâmetro indica o tipo de acesso desejado, ou seja, leitura ou escrita. Nesse caso contém uma letra {\tt r} para indicar que o arqivo será aberto para leitura. Usar a letra {\tt w} para escrita. \FOPEN\ retorna zero em caso de erro, ou seja, se o arquivo não existir ou se não houver permissão para o acesso desejado.
+
+\begin{lstlisting}
+FILE* fp = fopen("arquivo.txt", "r");
+\end{lstlisting}
+
+\item Uma maneira de testar se o arquivo foi aberto corretamente é mostrada a sqguir. Uma mensagem mais esclarecedora para o usuário, e portanto mais útil, pode incluir o nome do arquivo.
+
+\begin{lstlisting}
+  if (fp == 0)
+  {
+    printf("Erro ao abrir arquivo\n");
+    return 1;
+  }
+\end{lstlisting}
+
+
+\item Uma vez que o arquivo esteja aberto, chamar \FSCANF\ com o ponteiro retornado por \FOPEN\ como primeiro parâmetro. Como \SCANF, recebe também uma string com o especificador de formato, e a variável onde o valor lido deve ser armazenado. Essa variável deve ser passada por referência, ou seja, é necessário usar o símbolo {\tt \&} antes do identificador da variável para indicar que é passado seu endereço como parâmetro.
+
+\begin{lstlisting}
+int i;
+fscanf(fp, "%d", &i);
+float x;
+fscanf(fp, "%f", &x);
+char letra;
+fscanf(fp, "%c", &letra);
+\end{lstlisting}
+
+\item Segue um programa exemplo que lê dois números inteiros de um arquivo. Cada número deve estar em uma linha diferente no arquivo.
+
+\begin{lstlisting}
+#include <stdio.h> 
+int main (void)
+{
+  int a, b;
+  FILE* fp = fopen("arquivo.txt", "r");
+  if (fp == 0)
+  {
+    printf("Erro ao abrir arquivo\n");
+    return 1;
+  }
+  fscanf(fp, "%d", &a);
+  printf("Valor de a = %d\n", a);
+  fscanf(fp, "%d", &b);
+  printf("Valor de b = %d\n", b);
+  fclose(fp);
+}
+\end{lstlisting}
+
+\item Abaixo está uma versão alternativa que usa \FGETS\ para ler cada linha do arquivo por completo antes de tentar extrair dela o número. Observe que a função \FGETS\ é usada no lugar da \GETS, da Seção~\ref{sec:sscanf}. \
+
+\begin{lstlisting}
+#include <stdio.h> 
+int main (void)
+{
+  int MAX_LEN = 256
+  int a, b;
+  FILE* fp = fopen("arquivo.txt", "r");
+  if (fp == 0)
+  {
+    printf("Erro ao abrir arquivo\n");
+    return 1;
+  }
+  char line[MAX_LEN];
+  fgets(line, MAX_LEN, fp);
+  sscanf(line, "%d", &a);
+  printf("Valor de a = %d\n", a);
+  fgets(line, MAX_LEN, fp);
+  sscanf(line, "%d", &b);
+  printf("Valor de b = %d\n", b);
+  fclose(fp);
+}
+\end{lstlisting}
+
+
+\item Idealmente, deve-se testar se cada \FSCANF\ e \FGETS\ fez uma leitura bem sucedida, como no trecho de código abaixo. \FGETS\ recebe três parâmetros: um vetor de caracteres ou string, o tamanho máximo da string e o ponteiro para o arquivo. Retorna zero em caso de erro.
+
+\begin{lstlisting}
+  char* result1 = fgets(line, MAX_LEN, fp);
+  int result2 = sscanf(line, "%d", &n);
+  if (result1 != 0 && result2 == 1)
+  {
+    printf("Valor lido = %d\n", result, n);
+  }
+  else
+  {
+    printf("Valor invalido\n");
+  }
+\end{lstlisting}
+
+\item Ao final do programa, após fazer todas as leituras necessárias, fechar o arquivo com \FCLOSE, como na linha de código a seguir. Isso salva as escritas no arquivo e o libera para que outros programas possam acessá-lo.
+
+\begin{lstlisting}
+  fclose(fp);
+\end{lstlisting}
+
+\end{itemize}
+
+

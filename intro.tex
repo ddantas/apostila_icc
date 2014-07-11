@@ -1,0 +1,601 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Capítulo: Introdução ao C
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter{Introdução ao C}
+
+\setcounter{page}{1}    % set page to 1 again to start arabic count
+\pagenumbering{arabic}
+
+O C é uma linguagem {\it case sensitive}, compilada, com tipagem estática e fraca. 
+{\it Case sensitive} porque letras maiúsculas são consideradas diferentes de minúsculas. Seu código não roda interativamente como nas linguagens interpretadas. Deve ser compilado, ou seja, gerar código executável antes de rodar. Se diz que o C tem tipagem estática pois o tipo de uma variável, uma vez definido, não muda mais. Se diz que C tem tipagem fraca pois é possível realizar operações entre variáveis de tipos diferentes, como somar inteiros e reais.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Seção: Palavras reservadas
+
+\section{Palavras reservadas}
+
+\begin{itemize}
+
+\item Palavras reservadas ou palavras chave: são palavras que não podem ser usadas para nomear variáveis ou funções criadas pelo usuário.
+
+{\tt
+\begin{tabular}{lll}
+char     & void     & for     \\
+double   & true     & if      \\
+float    & false    & else    \\
+int      & switch   & typedef \\
+long     & case     & struct  \\
+short    & default  & return  \\
+signed   & break    & main    \\
+unsigned & while    & sizeof  \\
+\end{tabular}
+}
+
+
+\end{itemize}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Seção: Um programa em C mínimo
+
+\section{Um programa em C mínimo}
+
+
+\begin{itemize}
+
+\item Um programa em C mínimo: este programa não faz nada, simplesmente declara uma função \MAIN\ vazia. A função \MAIN\ é o ponto de entrada de qualquer projeto em C, ou seja, por onde o programa começa a execução. Neste exemplo não há nenhuma instrução dentro da \MAIN.
+
+\begin{lstlisting}
+int main(void)
+{
+}
+\end{lstlisting}
+
+
+\item Outro programa em C: este programa simplesmente imprime uma mensagem na tela através de uma chamada à função \PRINTF. Para usar \PRINTF, é necessário incluir o arquivo de cabeçalho {\tt stdio.h}.
+
+\begin{lstlisting}
+#include <stdio.h>
+int main(void)
+{
+    printf("Hello world!\n");
+}
+\end{lstlisting}
+
+
+\item Ainda outro programa em C: como no exemplo anterior, imprime uma mensagem na tela. Além disso, espera o usuário pressionar uma tecla antes de terminar a execução através de uma chamada de sistema a um comando chamado {\tt pause}. Essa chamada é feita através da função \SYSTEM. Para usar \SYSTEM, é necessário incluir o arquivo de cabeçalho {\tt cstdlib}.
+
+\begin{lstlisting}
+#include <stdio.h>
+#include <cstdlib>
+int main(void)
+{
+    printf("Hello world!\n");
+    system("pause");
+}
+\end{lstlisting}
+
+\end{itemize}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Seção: Programando em C
+
+\section{Programando em C}
+
+Para programar em C é necessário um compilador. Se seu sistema operacional for Windows, instale o Orwell Dev-C++, conhecido como {\it devcpp}, disponível em:
+
+{\tt http://sourceforge.net/projects/orwelldevcpp/}
+
+Se seu sistema operacional for Linux, instale o gcc rodando o comando
+
+{\tt sudo apt-get install gcc}
+
+\begin{itemize}
+
+\item Como criar um programa em C
+
+\subitem 1 - Editar o código fonte e salvar em um arquivo com extensão cpp.
+\subitem 2 - Compilar o código fonte usando um compilador.
+\subitem 3 - Rodar o programa.
+
+\item Usando o devcpp: o devcpp é um ambiente integrado de programação, com editor e compilador na mesma aplicação.
+
+\subitem 1 - Criar um novo {\it source file} com ctrl + n.
+\subitem 2 - Editar e salvar o arquivo com extensão cpp.
+\subitem 3 - Pressionar F9 para compilar e rodar.
+\subitem 4 - Ler as mensagens do compilador e corrigir os erros.
+\subitem 5 - {\it Go to} 3.
+
+\item Usando o gcc: o gcc é um compilador de linha de comando.
+
+\subitem 1 - Criar um novo {\it source file} com um editor de texto como o emacs.
+\subitem 2 - Editar e salvar o arquivo com extensão cpp.
+\subitem 3 - Compilar usando o gcc. Antes de rodar a linha de comando abaixo, substitua o conteúdo entre {\tt <>} pelos nomes dos arquivos.
+
+{\tt gcc <nome\_arq\_fonte.cpp> -o <nome\_arq\_executável>}
+
+\subitem 4 - Ler as mensagens do compilador e corrigir os erros de compilação.
+\subitem 5 - Chamar o executável caso tenha compilado e corrigir os erros de lógica.
+\subitem 6 - {\it Go to} 3.
+
+\end{itemize}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Seção: Literais
+
+\section{Literais}
+\label{sec:lit}
+
+Literais são valores com os quais podemos trabalhar. Podem ser de diversos tipos:
+
+\nobreakspace
+
+{\tt
+\begin{tabular}{llll}
+Números inteiros:        & 0                     & Números reais:    & 2.0       \\
+                         & -1                    &                   & 3.1415    \\
+                         & 333                   &                   & -1000.0   \\
+\\
+Inteiros hexadecimais:   & 0xff                  & Inteiros octais:  & 077       \\
+                         & 0x002a                &                   & 06        \\
+                         & 0xd                   &                   & 02342     \\
+\\
+Caracteres:              & 'a'                   & Strings:          & "Hello world"       \\
+                         & '4'                   &                   & "bom dia"           \\
+                         & '\textbackslash n'    &                   & "Idade = \%d anos"   \\
+\\
+Valores booleano:        & true                  &                   &                      \\
+                         & false                 &                   &                      \\
+\end{tabular}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Seção: Chamada de funções
+
+\section{Chamada de funções}
+
+\begin{itemize}
+
+\item Funções são trechos de código encapsulados que executam alguma operação.
+\item Funções são chamadas pelo nome.
+\item Recebem zero ou mais parâmetros entre parênteses. O número de parâmetros é definido na sua criação e pode ser constante 
+(as funções {\tt sin}, {\tt cos}, {\tt log} recebem um parâmetro; 
+a função {\tt pow} recebe dois parâmetros)
+ou variável (\PRINTF\ recebe um ou mais parâmetros).
+\item Podem retornar um valor de algum tipo de dado. Esse tipo (real, inteiro, caracter etc) é definido no momento da sua criação. O valor retornado pode mudar dependendo dos parâmetros que a função recebe ao ser chamada.
+\item Podem também não retornar nada. São as funções de tipo {\tt void}.
+
+\item Exemplos de chamadas:
+
+\begin{lstlisting}
+printf("Hello\n");
+printf("O mundo termina no ano de %d\n", 2012);
+sin(1.0);
+pow(2.0, 3.0);
+printf("O seno de pi/2 eh %f\n", sin(3.14/2.0));
+\end{lstlisting}
+
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Seção: A biblioteca de funções matemáticas
+
+\section{A biblioteca de funções matemáticas}
+
+Para usá-la, adicione a linha seguinte ao início do código:
+
+\begin{lstlisting}
+#include <math.h>
+\end{lstlisting}
+
+\begin{itemize}
+
+\item Caso esteja usando Linux, adicionar a opção {\tt -lm} à linha de comando de chamada ao gcc.
+
+\item Contém funções como
+
+{\tt
+\begin{tabular}{lll}
+sin      & cos      & tan     \\
+asin     & acos     & atan    \\
+log      & log10    & pow     \\
+ceil     & floor    & fabs    \\
+\end{tabular}
+}
+
+\item Contém constantes como
+
+{\tt
+\begin{tabular}{lll}
+M\_PI    & M\_E     &         \\
+\end{tabular}
+}
+
+\item Abaixo está um exemplo de programa que usa essa biblioteca. O programa imprime uma mensagem com o valor do seno de de pi/4 através de uma chamada a \PRINTF, e espera o usuário pressionar uma tecla antes de finalizar.
+
+\begin{lstlisting}
+#include <stdio.h>
+#include <cstdlib>
+#include <math.h>
+int main(void)
+{
+    printf("O seno de pi/4 eh %f\n", sin(3.14/4.0));
+    system("pause");
+}
+\end{lstlisting}
+
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Seção: Comentários
+
+\section{Comentários}
+
+Comentários são textos ignorados pelo compilador. Dentro de um comentário é possível escrever qualquer coisa, sem risco de erros de compilação. Em C existem dois tipos de comentário:
+
+\begin{itemize}
+
+\item Comentários de uma linha: começa com {\tt //} e vai até o final da linha.
+\item Comentários de múltiplas linhas: começa com {\tt /*} e termina com {\tt */}.
+
+\item Exemplo de programa com comentários.
+
+\begin{lstlisting}
+/* 
+Programa que imprime o valor do seno
+de 45 graus, ou pi/4.
+*/
+#include <stdio.h> // biblioteca do printf
+#include <cstdlib> // biblioteca do system
+#include <math.h>  // biblioteca do sin
+int main(void)
+{
+    printf("O seno de pi/4 eh %f\n", sin(3.14/4.0));
+    system("pause");
+}
+\end{lstlisting}
+
+
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Seção: Identificadores
+
+\section{Identificadores}
+\label{sec:ident}
+
+Identificadores são os nomes de variáveis, funções, constantes e outros objetos, tanto os criados pelo usuário quanto os contidos em bibliotecas.
+
+\begin{itemize}
+\item O primeiro caracter pode ser letra ou sublinhado
+\item Os demais caracteres podem ser letras, dígitos ou sublinhado.
+\item Não pode ser igual a nenhuma palavra reservada.
+\item Exemplos:
+
+{\tt
+\begin{tabular}{llll}
+Corretos:           & \_ABC                 & Incorretos:     & 123       \\
+                    & contador              &                 & i+1       \\
+                    & i                     &                 & a!        \\
+                    & x2                    &                 & r\$       \\
+\end{tabular}
+}
+
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Seção: Variáveis
+
+\section{Variáveis}
+
+Variáveis são posições de memória com um nome, usadas para armazenar valores. Os valores armazenados podem ser modificados a qualquer momento.
+
+\begin{itemize}
+\item O nome de uma variável deve ser um identificador válido, como descrito na Seção \ref{sec:ident}.
+\item Sua declaração e inicialização devem aparecer no código antes de seu primeiro uso.
+\item A declaração de uma variável é onde definimos seu tipo e seu identificador, isto é, seu nome.
+\item A inicialização de uma variável é onde atribuímos a ela algum valor.
+\item A declaração de uma variável tem o seguinte formato:
+
+{\tt <tipo de dados> <identificador>;}
+
+\item Exemplos de declarações de variáveis:
+\begin{lstlisting}
+int x;
+int i;
+float f;
+char c;
+unsigned int file_size;
+unsigned char idade;
+unsigned short int ano;
+double p1;
+long long int n;
+long double value;
+\end{lstlisting}
+
+
+\item Variáveis podem ser:
+\subitem Locais, quando declaradas dentro de uma função.
+\subitem Globais, quando declaradas fora de funções.
+\subitem Parâmetros, quando declaradas na lista de parâmetros da definição de uma função.
+
+\item Variáveis locais e globais podem ser inicializadas, ou seja, receber algum valor, no momento de sua declaração. O formato de uma declaração com inicialização é o seguinte:
+
+{\tt <tipo de dados> <identificador> = <valor>;}
+
+Lembrando que identificador é o nome. O valor pode ser um literal, como descrito na Seção~\ref{sec:lit}, outra variável, uma chamada de função que retorna algum valor, ou mesmo uma expressão matemática.
+
+\item Exemplos de declarações de variáveis com inicialização:
+\begin{lstlisting}
+int x = 1;
+int i = 0;
+float e = 2.7;
+char c = 'a';
+double p = sin(M_PI/4.0);
+double p2 = p;
+double p_dup = 2.0 * p;
+\end{lstlisting}
+
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Seção: Constantes
+
+\section{Constantes}
+
+Como variáveis, constantes são posições de memória que armazenam algum valor. Porém ao contrário de variáveis, o valor não pode ser modificado.
+
+\begin{itemize}
+
+\item A declaração de uma constante tem o seguinte formato:
+
+{\tt const <tipo de dados> <identificador> = <valor>;}
+
+\item Exemplos de declarações de constantes:
+\begin{lstlisting}
+const long int c = 299792458;
+const float pi = 3.141592653589793238462;
+const float G = 6.67428E-11;
+const double h = 6.62606896E-34;
+\end{lstlisting}
+
+\end{itemize}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Seção: Tipos de dados
+
+\section{Tipos de dados}
+
+Em um computador digital, todo e qualquer dado é armazenado em forma de bits. O conteúdo de uma posição de memória pode ser interpretado como um número inteiro, real ou até mesmo uma string. Portanto, para que um dado seja interpretado corretamente, é necessário associar a esse dado o seu tipo. Na linguagem C os tipos mais importantes são:
+
+\begin{itemize}
+\item {\tt int}: valor inteiro. Normalmente ocupa 4 bytes, sendo capaz de representar inteiros de -2147483648 a 2147483647.
+\item {\tt float}: valor real. Normalmente ocupa 4 bytes, sendo capaz de representar valores reais com cerca de 8 dígitos significativos.
+\item {\tt double}: valor real. Normalmente ocupa 8 bytes, sendo capaz de representar valores reais com cerca de 16 dígitos significativos.
+\item {\tt char}: valor inteiro pequeno ou caracter. Ocupa 1 byte, sendo capaz de representar inteiros de -128 a 127.
+\item {\tt bool}: valor lógico. Pode ser {\tt true} ou {\tt false}.
+
+\item {\tt void}: tipo vazio. Usado para declarar funções que não retornam valor ou ponteiros sem tipo associado.
+\end{itemize}
+
+Alguns tipos de dados podem ser alterados por modificadores:
+
+\begin{itemize}
+\item {\tt unsigned}: pode modificar os tipos {\tt int} e {\tt char}. Uma variável {\tt unsigned} é sempre positiva, e pode representar valores duas vezes maiores que sua correspondente {\tt signed}
+\item {\tt signed}: pode modificar os tipos {\tt int} e {\tt char}. 
+Por padrão toda variável {\tt int} e {\tt char} é {\tt signed}, ou seja, com sinal.
+\item {\tt short}: pode modificar o tipo {\tt int}, diminuindo sua capacidade. Normalmente, em máquinas de 64 bits, um short int ocupa 2 bytes.
+\item {\tt long}: pode modificar os tipos {\tt int} e {\tt double}, aumentando sua capacidade. Normalmente, em máquinas de 64 bits, um long int ocupa 8 bytes e um long double, 16 bytes.
+
+\end{itemize}
+
+Para descobrir quanto espaço ocupa uma variável de um certo tipo de dados, usar o operador unário \SIZEOF. \SIZEOF\ pode ser usado com tipos de dados ou com variáveis. No primeiro caso, o uso de parênteses é obrigatório, e no segundo, é opcional. Observe o exemplo abaixo.
+
+\begin{lstlisting}
+#include <stdio.h>
+#include <cstdlib>
+int main(void)
+{
+    char C;
+    printf("Um int ocupa %ld bytes\n", sizeof(int));
+    printf("A variavel C ocupa %ld bytes\n", sizeof(C));
+    system("pause");
+}
+\end{lstlisting}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Seção: Expressões numéricas
+
+\section{Expressões numéricas}
+\label{sec:expr}
+
+Expressões numéricas são compostas por operadores e operandos. Os operandos podem ser literais, funções que retornam algum valor, variáveis, constantes, ou mesmo outras expressões. Os operadores podem ser de atribuição, de comparação, aritméticos, lógicos ou bit a bit.
+
+\begin{itemize}
+\item Uma expressão elementar contém apenas um operando:
+\subitem {\tt <literal>}
+\subitem {\tt <função que retorna valor>}
+\subitem {\tt <variável>}
+\subitem {\tt <constante>}
+
+\item Exemplos de expressões elementares:
+\begin{lstlisting}
+10
+sin(M_PI)
+x
+M_PI
+\end{lstlisting}
+
+\item Uma expressão composta pode conter vários operadores e operandos:
+\subitem {\tt ( <expressão> <operador binário> <expressão> )}
+\subitem {\tt ( <operador unário> <expressão> )}
+
+\item Exemplos de expressões compostas:
+\begin{lstlisting}
+2 + 2
+-1
+x = 10
+sin(M_PI) + 1.0
+y = (3 + x)
+n = 2 * (3 + i)
+\end{lstlisting}
+
+
+\end{itemize}
+
+\subsection{O operador de atribuição \emph{=}}
+
+É usado para atribuir um valor a uma variável. É importante salientar que, antes de usar uma variável, ela deve ser inicializada, ou seja, algum valor deve ser atribuído a essa variável. Uma variável não inicializada pode conter um valor imprevisível.
+
+\begin{itemize}
+\item A forma geral de uma atribuição é a seguinte:
+
+{\tt <identificador da variável> = <expressão>;}
+
+Onde é claro que {\tt expressão} pode ser elementar, como um valor literal, outra variável, uma constante, uma chamada a função; ou composta, como uma operação aritmética, lógica etc.
+
+\item Exemplos de atribuições:
+\begin{lstlisting}
+n = 10;
+m = n;
+y = - (3 + x);
+n = 3 * (4 + i);
+\end{lstlisting}
+
+\end{itemize}
+
+\subsection{Operadores aritméticos}
+
+Expressões com operadores aritméticos retornam valores numéricos, inteiros ou reais.
+
+~\\
+
+{\tt
+\begin{tabular}{|l|llll|}
+\hline
+Precedência:        &    &    &     &                                    \\
+maior               & ++ & -- &     & (incremento e decremento unário)   \\
+                    & -  &    &     & (menos unário)                     \\
+                    & *  & /  & \%  & (multiplicaćão, divisão e módulo)  \\
+menor               & +  & -  &     & (soma e subtração)                 \\
+\hline
+\end{tabular}
+}
+
+\begin{itemize}
+
+\item Operadores de maior precedência são avaliados antes dos de menor precedência.
+\item Operadores com mesmo nível de precedência são avaliados da esquerda para a direita.
+\item É possível usar parênteses para modificar a ordem das operações
+\item {\tt i++} é o mesmo que {\tt i = i + 1}.
+\item {\tt i--} é o mesmo que {\tt i = i - 1}.
+
+\item Nos exemplos abaixo, que valor é atribuído à variável à esquerda do operador {\tt =}?
+
+\begin{lstlisting}
+a = 2 * 3 + 1;
+b = 1 + 2 * 3;
+c = 10 / 2 * 5;
+d = 10 % 3;
+e = 2 * 10 % 4;
+f = 3 * (2 + 1);
+g = 2;
+h = 3 * ++g;
+i = 3 * g++;
+\end{lstlisting}
+
+\end{itemize}
+
+\subsection{Operadores lógicos e de comparação}
+
+Expressões com operadores lógicos ou de comparação retornam valores do tipo {\tt bool}, ou seja, {\tt true} ou {\tt false}.
+
+~\\
+
+{\tt
+\begin{tabular}{|l|lllll|}
+\hline
+Precedência:        &      &    &    &    &                                    \\
+maior               & !    &    &    &    & (negação lógica)                   \\
+                    & >    & >= & <  & <= & (desigualdade)                     \\
+                    & ==   & != &    &    & (igualdade e diferença)            \\
+                    & \&\& &    &    &    & (and lógico)                       \\
+menor               & ||   &    &    &    & (or lógico)                        \\
+\hline
+\end{tabular}
+}
+
+\begin{itemize}
+
+\item Nos exemplos abaixo, que valor é atribuído à variável à esquerda do operador {\tt =}?
+
+\begin{lstlisting}
+a = 1 < 2;
+b = true || false;
+c = true && false;
+d = 1 < 2 || 4 < 2;
+e = 1 < 2 && 4 < 2;
+f = 1 < 1;
+g = !(3 < 2);
+e = 3 == 4;
+e = 3 != 4;
+\end{lstlisting}
+
+\item Para testar se o valor de uma variável está em um certo intervalo, a construção é a seguinte: 
+
+\begin{lstlisting}
+f > 0 && f < 1
+\end{lstlisting}
+
+para testar se f está entre 0 e 1. Jamais omitir o {\tt \&\&} como na expressão INCORRETA abaixo:
+
+\begin{lstlisting}
+0 < f < 1
+\end{lstlisting}
+
+\end{itemize}
+
+\subsection{Operadores bit a bit}
+
+Operam sobre o valor binário de uma variável. A variável só pode ser do tipo \INT, \CHAR\ ou suas variantes.
+
+~\\
+
+{\tt
+\begin{tabular}{|l|llll|}
+\hline
+Precedência:        &       &    &     &                                    \\
+maior               & \LNOT &    &     & (complemento de um)                \\
+                    & <<    & >> &     & (shift left e shift right)         \\
+                    & \LAND &    &     & (and binário)                      \\
+                    & \LXOR &    &     & (xor binário)                      \\
+menor               & \LOR  &    &     & (or binário)                       \\
+\hline
+\end{tabular}
+}
+
+
+\begin{itemize}
+
+\item Nos exemplos abaixo, que valor é atribuído à variável à esquerda do operador {\tt =}?
+
+\begin{lstlisting}
+a = 3 | 1;
+b = 1 >> 1;
+c = 1 << 1;
+d = 1 << 2;
+e = 5 ^ 3;
+f = ~ 0;
+\end{lstlisting}
+
+\end{itemize}
+

@@ -1,0 +1,44 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Capítulo: Indentação
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter{Indentação}
+
+Indentação é a maneira como avançamos ou recuamos as instruções no texto do código fonte para facilitar o entendimento. A linguagem C ignora completamente a indentação. Porém, para o programador, enquanto um código mal indentado pode aparecer completamente ilegível, o mesmo código bem indentado costuma aparecer claro e compreensível.
+
+Observe o código abaixo: 
+
+\begin{lstlisting}
+#include <stdio.h> 
+int main (void){long int val=1;for(int n=1; 
+n<=8;n++){val=val*n;}printf("val = %ld\n",val);}
+\end{lstlisting}
+
+Esse código possui exatamente as mesmas instruções que o código a seguir. A única diferença está na indentação. Observe como o código abaixo é mais legível:
+
+\begin{lstlisting}
+#include <stdio.h>
+int main (void)
+{
+  long int val = 1;
+  for (int n = 1; n <= 8; n++)
+  {
+    val = val * n; 
+  }
+  printf("val = %ld\n", val);
+}
+\end{lstlisting}
+
+\pagebreak
+
+Em C, {\it bloco} se refere a linhas de código entre chaves. Abrimos um novo bloco de código quando declaramos uma função, quando criamos uma instrução de laço com \FOR\ ou \WHILE, ou uma instrução de controle de fluxo com \IF\ ou \SWITCH.
+Para se indentar um código em C como no exemplo acima, siga as instruções a seguir:
+
+\begin{itemize}
+\item A chave que abre um bloco fica abaixo da primeira letra da instrução que abre o bloco.
+\item Cada vez que se abre uma chave, avançar 4 espaços. Cada vez que se fecha uma chave, recuar 4 espaços.
+\item A chave que fecha um bloco fica exatamente abaixo da chave que abre o bloco.
+\item Cada vez que se abre uma chave, pular uma linha para que a primeira instrução do bloco fique na linha seguinte à da chave.
+\end{itemize}
+
+Todo código deve ser indentado corretamente, tanto código escrito em papel quanto em arquivos digitais.

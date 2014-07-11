@@ -1,0 +1,62 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Capítulo: Vetores
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter{Vetores}
+
+Vetores são sequências de valores do mesmo tipo referenciados por um mesmo nome. Um elemento específico da sequência é acessado por meio de um índice inteiro não negativo.
+
+Na linguagem C, os vetores começam com o índice zero. Um vetor com {\tt n} posições terá como índices válidos os inteiros de zero a {\tt n-1}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Seção: Vetores unidimensionais
+
+\section{Vetores unidimensionais}
+
+Uma declaração de vetor tem o seguinte formato:
+
+\NEWLINE
+{\tt
+<Tipo de dado> <Identificador> [ <Tamanho> ];
+}
+\NEWLINE
+
+A expressão elementar abaixo funciona como uma variável comum, podendo ser usada em expressões aritméticas, de comparação, atribuição, ou como parâmetro em chamadas de funções.
+
+\NEWLINE
+{\tt
+<Identificador> [ <Posição> ]
+}
+\NEWLINE
+
+Uma atribuição de valor a uma certa posição do vetor, por exemplo, tem o seguinte formato:
+
+\NEWLINE
+{\tt
+<Identificador> [ <Posição> ] = <Valor>;
+}
+\NEWLINE
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Seção: Matrizes
+
+\section{Matrizes}
+
+Uma matriz é um vetor bidimensional. Sua declaração é semelhante à de um vetor unidimensional.
+
+\NEWLINE
+{\tt
+<Tipo de dado> <Identificador> [ <Linhas> ][ <Colunas> ];
+}
+\NEWLINE
+
+
+Para acessar um item individual de uma matriz, usar o formato abaixo:
+
+\NEWLINE
+{\tt
+<Identificador> [ <Linha> ][ <Coluna> ]
+}
+\NEWLINE
+
+

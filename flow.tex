@@ -1,0 +1,103 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Capítulo: Controle de fluxo
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter{Controle de fluxo}
+
+Um programa de computador é uma sequência de instruções. Normalmente as instruções são executadas na ordem em que aparecem no programa. Porém, isso permite apenas a criação de programas muito simples. 
+
+Imagine que tenhamos por exemplo uma matriz com centenas de valores. Para processar cada item dessa matriz, precisamos executar centenas de instruções. Se a instrução for a mesma para todos os itens da matriz, podemos facilitar nossa vida criando um programa bem mais simples se colocarmos essa instrução dentro de um {\it laço}, ao invés de ter uma cópia desta mesma instrução para cada item da matriz.
+
+Outro caso em que o controle de fluxo é útil é quando uma instrução é executada em apenas alguns casos. Imagine que tempos um banco de dados com milhões de valores de CPF e queremos imprimir apenas o nome do portador de um certo CPF. Podemos usar uma instrução do tipo {\tt if} que, para cada CPF lido, testa se é igual ao CPF desejado e imprime o nome do portador somente em caso afirmativo.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Seção: if / else
+
+\section{if / else}
+
+Uma instrução do tipo \IF\ executa um bloco de instruções somente se uma dada condição é verdadeira. Opcionalmente pode ser complementada com uma instrução \ELSE, que executa outro bloco caso a dada condição seja falsa.
+
+\begin{itemize}
+
+\item A forma geral de uma instrução \IF\ é a seguinte:
+
+{\tt 
+if (<expressão condicional>)                     \\
+\{                                               \\
+\TAB <bloco executado se a condição for verdadeira>  \\
+\}                                               \\
+}
+
+\item A forma geral de uma instrução \IF/\ELSE\ é a seguinte:
+
+{\tt 
+if (<expressão condicional>)                     \\
+\{                                               \\
+\TAB <bloco executado se a condição for verdadeira>  \\
+\}                                               \\
+else                                             \\
+\{                                               \\
+\TAB <bloco executado se a condição for falsa>   \\
+\}                                               \\
+}
+
+\item Observe que a expressão condicional só aparece uma vez, junto ao \IF, jamais junto ao \ELSE.
+
+\item A expressão condicional pode ser uma expressão lógica, de comparação, ou uma operação aritmética com inteiros. Nao usar expressões aritméticas com \FLOAT\ ou \DOUBLE.
+\item O bloco do \IF\ é executado se a expressão condicional der como resultado \TRUE\ ou diferente de zero.
+\item O bloco do \ELSE\ é executado se a expressão condicional der como resultado \FALSE\ ou igual a zero.
+
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Seção: for
+
+\section{for}
+\label{sec:for}
+
+Palavra reservada para criar instruções de iteração, ou seja, laços. Um laço é um bloco que é executado várias vezes.
+
+\begin{itemize}
+
+\item A forma geral de uma instrução \FOR\ é a seguinte:
+
+{\tt 
+for (<inicialização>; <condição de continuidade>; <incremento>) \\
+\{                                                            \\
+\TAB <bloco a ser executado várias vezes>                     \\
+\}                                                            \\
+}
+
+\item Na inicialização, geralmente uma variável de controle é declarada e inicializada.
+\item Variável de controle é a que indica quando o laço deve parar.
+\item Na condição de continuidade, se testa se o laço deve continuar. Geralmente isso é feito comparando a variável de controle com algum valor.
+\item No incremento, a variável de controle é incrementada. Pode também ser decrementada se necessário.
+
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Seção: while
+
+\section{while}
+\label{sec:while}
+
+Faz exatamente o mesmo que o \FOR, ou seja, serve para criar laços. A diferença está na sintaxe.
+
+\begin{itemize}
+
+\item A forma geral de uma instrução \WHILE\ é a seguinte:
+
+{\tt 
+<inicialização>;                                              \\ 
+while (<condição de continuidade>)                            \\
+\{                                                            \\
+\TAB <bloco a ser executado várias vezes>                     \\
+\TAB <incremento>;                                            \\
+\}                                                            \\
+}
+
+\item A inicialização, condição de continuidade e incremento funcionam exatamente da mesma maneira que no \FOR, conforme explicado na Seção~\ref{sec:for}
+
+\end{itemize}
+
+

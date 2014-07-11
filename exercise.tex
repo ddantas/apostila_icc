@@ -1,0 +1,324 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Capítulo: Exercícios
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter{Exercícios}
+
+\newcounter{iQuest}
+\setcounter{iQuest}{0}
+
+\newcommand{\quest}{%
+\addtocounter{iQuest}{1}%
+\arabic{iQuest}}
+
+\newcommand{\zeraquest}{%
+\setcounter{iQuest}{0}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Seção: Introdução
+
+\zeraquest
+
+\section{Introdução}
+
+\quest - Crie uma função \MAIN\ vazia.
+
+\NEWLINE
+\quest - Crie uma função \MAIN\ e dentro dela declare as seguintes variáveis:
+
+	a) um inteiro chamado {\tt n}.
+
+	b) um real de precisão simples chamado {\tt f}.
+
+	c) um real de precisão dupla chamado {\tt d}.
+
+	d) um caracter chamado {\tt c}.
+
+	e) um inteiro longo chamado {\tt l}.
+
+\NEWLINE
+\quest - Em C, as instruções devem ser terminadas com ponto e vírgula. A declaração de uma variável é o primeiro lugar do programa onde a variável aparece e é onde seu tipo de dados é definido. A inicialização é onde algum valor é atribuído a ela pela primeira vez. A declaração e inicialização podem ocorrer na mesma instrução. Por exemplo:
+\begin{lstlisting}
+	int i = 0;
+	float x = 5.2;
+	float y = x*x;
+\end{lstlisting}
+Crie uma função \MAIN\ e dentro dela declare e inicialize na mesma instrução:
+
+	a) um inteiro chamado {\tt val}.
+
+	b) um real de precisao simples chamado {\tt x}.
+
+	c) um real de precisão dupla chamado {\tt xd}.
+
+	d) um caracter chamado {\tt tiny}.
+
+	e) um inteiro longo chamado {\tt huge}.
+
+\NEWLINE
+\quest - Crie uma função \MAIN\ que faz o mesmo que na questão anterior e em seguida, para cada variável, imprime uma mensagem com seu nome, a palavra "vale", e seu valor. Para uma variável chamada pipoca, por exemplo:
+
+	{\tt pipoca vale 3.141592}
+
+\NEWLINE
+\quest - Crie uma função \MAIN\ que faz o mesmo que na questão anterior, porém, ao invés de declarar variáveis, declare constantes.
+
+\NEWLINE
+\quest - Crie uma função \MAIN\ e dentro dela declare e inicialize na mesma instrução cinco variáveis inteiras. Para inicializá-las use expressões com três operadores aritméticos cada. Na mesma linha, coloque em um comentário o resultado da expressão. Por exemplo:
+\begin{lstlisting}
+	int i = 5 + 2 * 3 * 4; // 29
+\end{lstlisting}
+
+\NEWLINE
+\quest - Crie uma função \MAIN\ e dentro dela declare e inicialize na mesma instrução cinco variáveis inteiras. Para inicializá-las use expressões com cinco operadores aritméticos cada. Na mesma linha, coloque em um comentário o resultado da expressão.
+
+\NEWLINE
+\quest - Crie uma função \MAIN\ e dentro dela declare e inicialize na mesma instrução cinco variáveis reais de precisão dupla. Para inicializá-las use expressões com dois operadores aritméticos e uma chamada a função em cada expressão. Na mesma linha, coloque em um comentário o resultado da expressão.
+
+\NEWLINE
+\quest - Crie uma função \MAIN\ e dentro dela declare e inicialize na mesma instrução cinco variáveis reais de precisão simples. Para inicializá-las use expressões com três operadores aritméticos cada. Na mesma linha, coloque em um comentário o resultado da expressão.
+
+\NEWLINE
+\quest - Crie uma função \MAIN\ que imprime a mensagem \verb|"Hello\n"|.
+
+\NEWLINE
+\quest - Crie uma função \MAIN\ que imprime a mensagem \verb|"Hello\n"| e em seguida chama \verb|system("pause")|.
+
+\NEWLINE
+\quest - O que acontece quando:
+
+	a) atribuímos um valor \INT\ a uma variável \FLOAT?
+
+	b) atribuímos um valor \FLOAT\ a uma variável \INT?
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Seção: Controle de fluxo
+
+\zeraquest
+
+\section{Controle de fluxo}
+
+\quest - Crie uma função \MAIN\ que imprime todos os inteiros de 1 a 100 com apenas uma instrução com \PRINTF. Use:
+
+	a) um laço com a palavra reservada \WHILE.
+
+	b) um laço com a palavra reservada \FOR.
+
+\NEWLINE
+\quest – Seja n um inteiro entre 1 e 1000. Crie uma função \MAIN\ com um laço ({\tt for} ou {\tt while}) que imprime uma mensagem \verb|"%d modulo 2 vale %d"| para cada {\tt n} entre 1 e 1000. No lugar do primeiro \%d deve aparecer o valor de {\tt n}, e no lugar do segundo \%d, o valor de {\tt n} modulo 2. O operador módulo, representado por \%, retorna o resto da divisão de um número por outro número. Por exemplo, 12 \% 10 retorna 2.
+
+\NEWLINE
+	Resposta:
+
+\begin{lstlisting}
+int main(void)
+{
+    for(int i = 1; i <= 1000; i++)
+    {
+        printf("\%d modulo 2 vale \%d\n", i, i \% 2);
+    }
+}
+\end{lstlisting}
+\NEWLINE
+\quest – Seja n um inteiro entre 1 e 1000. Crie uma função \MAIN\ com um laço (for ou while) que imprime uma mensagem \verb|"%d eh par"| se {\tt n} for par, ou \verb|"%d eh impar"| se {\tt n} for impar, para cada n entre 1 e 1000. No lugar do primeiro \verb|%d| deve aparecer o valor de {\tt n}. Usar if para testar se o módulo de {\tt n} por 2 vale 0, o que indica que {\tt n} é par, ou 1, o que indica que {\tt n} é ímpar. Observe que operador de comparação que testa igualdade em C é o {\tt ==}, diferente do operador de atribuição {\tt =}.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Seção: Funções
+
+\zeraquest
+
+\section{Funções}
+
+\quest - Crie uma função chamada {\tt alo} que não recebe parâmetros nem retorna valores, apenas imprime a mensagem \verb|"hello world"|.
+	Resposta:
+\begin{lstlisting}
+	void alo(void)
+	{
+		printf("hello world\n");
+	}
+\end{lstlisting}
+\NEWLINE
+\quest – Crie uma função \MAIN\ que simplesmente chama a função {\tt alo}.
+
+\NEWLINE
+\quest - Crie uma função de tipo \VOID\ chamada {\tt preguica}, que não recebe parâmetros e não faz nada.
+\NEWLINE
+\quest – Crie uma função \MAIN\ que simplesmente chama a função {\tt preguica}.
+
+\NEWLINE
+\quest - Crie uma função chamada {\tt imprimeInt} que recebe um parâmetro inteiro, mas não retorna valores, apenas imprime a mensagem \verb|"valor inteiro igual a "| seguida do valor do parâmetro recebido.
+
+\NEWLINE
+\quest – Crie uma função \MAIN\ que simplesmente chama a função {\tt imprimeInt}. Lembre-se de fornecer como parâmetro algum valor inteiro.
+
+\NEWLINE
+\quest - Crie uma função chamada {\tt duzia} que recebe um parâmetro real de precisão simples e retorna 12 vezes seu valor.
+	Resposta:
+\begin{lstlisting}
+	float duzia(float x)
+	{
+		return 12*x;
+	}
+\end{lstlisting}
+\NEWLINE
+\quest – Crie uma função \MAIN\ que simplesmente chama a função {\tt duzia}. Lembre-se de fornecer como parâmetro algum valor de tipo \FLOAT. Salve o resultado em uma variável e imprima o resultado.
+
+\NEWLINE
+\quest - Crie uma função de tipo \INT\ chamada {\tt triplo}, que recebe um parâmetro inteiro e retorna três vezes seu valor.
+\NEWLINE
+\quest – Crie uma função \MAIN\ que chama a função {\tt triplo}, salva o valor retornado em uma variável e em seguida o imprime.
+
+\NEWLINE
+\quest - Crie uma função de tipo \INT\ chamada \verb|eh_par|, que recebe um parâmetro inteiro e retorna 1 (um) caso o inteiro seja par, e 0 (zero) caso contrário.
+
+\NEWLINE
+\quest - Crie uma função de tipo \VOID\ chamada \verb|imprime_float|, que recebe um parâmetro de tipo float e imprime a mensagem:
+
+\verb|"o valor da variavel real eh %f\n"|
+\\
+substituindo o \verb|%f| pelo valor do parâmetro.
+
+
+
+\NEWLINE
+\quest - Crie uma funcão de tipo \FLOAT\ chamada \verb|circunferencia|, que recebe um parâmetro de tipo \FLOAT\ igual ao raio de um círculo e retorna o comprimento de sua circunferência.
+
+\NEWLINE
+\quest - Crie uma funcão de tipo \FLOAT\ chamada \verb|area_circulo|, que recebe um parâmetro de tipo \FLOAT\ igual ao raio de um círculo e retorna seu raio.
+
+\NEWLINE
+\quest - Crie uma funcão de tipo \FLOAT\ chamada \verb|volume_esfera|, que recebe um parâmetro de tipo \FLOAT\ igual ao raio de uma esfera e retorna seu volume.
+
+\NEWLINE
+\quest - Crie uma funcão de tipo \INT\ chamada \verb|somatoria|, que recebe um parâmetro de tipo \INT\ chamado {\tt n} e retorna a soma dos inteiros de 1 a {\tt n}.
+
+\NEWLINE
+\quest - Crie uma função chamada {\tt fatorial} que recebe um parâmetro inteiro e retorna seu fatorial.
+
+	a) implemente a função usando um laço while.
+
+	b) implemente a função usando um laço for.
+
+	c) implemente a função usando uma chamada a ela mesma. Para isso, use a definição recursiva de fatorial:
+
+		se {\tt n == 0} ({\tt ==} é operador de comparação) 
+
+então {\tt fatorial(n) = 1}
+
+		senão {\tt fatorial(n) = n * fatorial(n-1)}
+
+\NEWLINE
+\quest - Crie uma funcão de tipo \INT\ chamada {\tt somatoria}, que recebe um parâmetro de tipo \INT\ chamado {\tt n} e retorna a soma dos inteiros de 1 a {\tt n}.
+
+
+\NEWLINE
+\quest - Crie uma funcão de tipo \DOUBLE\ chamada {\tt norma}, que recebe dois parâmetros de tipo \DOUBLE\ chamados {\tt a} e {\tt b}, e retorna a norma do vetor (a,b).
+
+
+\NEWLINE
+\quest - Crie uma função chamada {\tt pg3}, que retorna o terceiro termo de uma progressão geométrica. A função recebe dois parâmetros inteiros, o primeiro parâmetro é o primeiro termo da pg; o segundo é sua razão.
+
+\NEWLINE
+\quest - Crie uma função chamada {\tt pg}, que retorna o n-ésimo termo de uma progressão geométrica. A função recebe três parâmetros inteiros, o primeiro parâmetro é o primeiro termo da pg; o segundo é sua razão, o terceiro é o {\tt n}.
+
+\NEWLINE
+\quest -
+
+a) Crie uma função de tipo \VOID\ chamada {\tt swap} que recebe dois parâmetros inteiros por referência e troca seus valores.
+
+b) Crie uma função  \MAIN\ e dentro dela declare e inicialize duas variáveis inteiras. Imprima seus valores, chame a função {\tt swap} passando-as por referência e imprima novamente, para testar se os valores foram realmente trocados.
+
+\NEWLINE
+\quest - Crie uma funcão de tipo \DOUBLE\ chamada {\tt delta}, que recebe três parâmetros de tipo \DOUBLE\ chamados {\tt a}, {\tt b} e {\tt c}, e retorna o valor de delta, ou seja, b*b – 4.0*a*c.
+
+\NEWLINE
+\quest – Crie uma função de tipo \INT\ chamada {\tt baskara}. Ela recebe por valor três parâmetros de tipo double chamados {\tt a}, {\tt b} e {\tt c}, representando os coeficientes de uma equação de segundo grau igual a a*x*x + b*x + c. Recebe ainda dois parâmetros por referência, chamados {\tt x1} e {\tt x2}, onde armazenará as raízes encontradas. Ela retorna o número de raízes reais da equação, ou seja, pode retornar 0 (zero), 1 (um) ou 2 (dois). Usar a função  delta da questâo anterior para testar quantas raízes a equação possui.
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Seção: Entrada e saída
+
+\zeraquest
+
+\section{Entrada e saída}
+
+
+\NEWLINE
+\quest - Crie uma funcão \MAIN\ e dentro dela:
+
+a) imprima a mensagem \verb|"Favor digitar um valor inteiro \n"|.
+
+b) declare uma variável inteira chamada {\tt i}.
+
+c) use \SCANF\ para ler o inteiro digitado pelo usuário e salvá-lo na variável {\tt i}.
+
+d) imprima a mensagem \verb|"Voce digitou "| seguida do valor digitado e \verb|"\n"|.
+
+e) chame \verb|system("pause")|.
+
+\NEWLINE
+\quest - Crie uma funcão \MAIN\ e dentro dela:
+
+a) imprima a mensagem \verb|"Favor digitar um valor inteiro\n"|.
+
+b) declare as variáveis inteiras {\tt i} e {\tt result}.
+
+c) use \SCANF\ para ler o inteiro digitado pelo usuário e salvá-lo na variável {\tt i}. Armazene o valor de retorno de \SCANF\ em {\tt result}.
+
+d) caso o valor de {\tt result} seja igual a 1 (um), imprima a mensagem \verb|Voce digitou "| seguida do valor digitado e \verb|"\n"|.
+
+e) caso contrário, imprima a mensagem \verb|"Eu pedi para digitar um inteiro!\n"|.
+
+f) chame \verb|system("pause")|.
+
+\NEWLINE
+\quest - Crie uma funcão \MAIN\ e dentro dela:
+
+a) solicite ao usuário que forneça dois valores reais e armazene-os em duas variáveis chamadas {\tt a} e {\tt b}.
+
+b) para cada variável lida, se a leitura foi bem sucedida imprima o valor lido. Caso contrário imprima uma mensagem de erro e finalize o programa.
+
+c) imprima mensagens indicando o valor da soma, do produto, da diferença, da razão entre {\tt a} e {\tt b}, norma do vetor (a,b) e o valor de {\tt a} elevado a {\tt b}.
+
+\NEWLINE
+\quest - Crie uma funcão \MAIN\ e dentro dela:
+
+a) solicite ao usuário que forneça três valores reais e armazene-os em três variáveis chamadas {\tt a}, {\tt b} e {\tt c}.
+
+b) para cada variável lida, se a leitura foi bem sucedida imprima o valor lido. Caso contrário imprima uma mensagem de erro e finalize o programa.
+
+c) imprima mensagens indicando o valor das raízes da equação de segundo grau igual a a*x*x + b*x + c. Usar as funções das questões {\tt baskara} e {\tt delta} criadas anteriormente.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Seção: Vetores
+
+\zeraquest
+
+\section{Vetores}
+
+
+\NEWLINE
+\quest - Crie uma funcão \MAIN:
+
+a) antes dela defina \verb|TAM_MAX| como sendo 10 (dez).
+
+b) dentro dela declare um vetor de inteiros chamado {\tt vet}, com tamanho máximo igual \verb|TAM_MAX|.
+
+c) declare uma variável inteira chamada {\tt tamanho}, para armazenar o tamanho ocupado desse vetor. Inicialize-a com zero.
+
+d) crie um laço \FOR\ que, a cada passo, solicita ao usuário que insira valores para cada posição do vetor, lê e armazena o dado digitado.
+
+e) em caso de sucesso do \SCANF, incremente {\tt tamanho} e continue. Em caso de erro, interrompa o laço com \BREAK.
+
+f) depois do laço, imprima o tamanho ocupado do vetor. Note que o tamanho ocupado pode ser diferente do tamanho máximo \verb|TAM_MAX|.
+
+g) imprima o conteúdo de cada uma das posições do vetor usando a seguinte mensagem: \verb|vet[%d] = %d\n"| substituindo o primeiro \verb|%d| pela posição, e o segundo pelo conteúdo.
+
+\NEWLINE
+\quest - Crie uma funcão \MAIN\ e dentro dela, declare um vetor de reais chamado {\tt numeros}. Seu tamanho máximo é definido por uma macro chamada \verb|TAM_MAX|, que vale 10 (dez). Em seguida, abra um arquivo chamado {\tt input.txt} cujo conteúdo é um valor real em cada linha. Use \FSCANF\ para ler esse arquivo e armazenar os valores no vetor {\tt numeros}, e o tamanho ocupado do vetor na variável inteira chamada {\tt tamanho}. Seu programa deve funcionar para qualquer tamanho de entrada, inclusive para arquivos com mais de dez valores. Nesse caso, o vetor ficará completamente ocupado e o valor de tamanho será 10.
+
+
