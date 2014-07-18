@@ -1,7 +1,9 @@
 
 
-#include <iostream>
-//#include <stdlib.h>
+#include <stdio.h>
+
+#include <cstdlib>
+//#include <iostream>
 
 int f(int x = 3)
 {
@@ -12,9 +14,13 @@ int f(int x = 3)
 int main(void)
 {
     
-    printf ("sizeof(int) = %d\n", sizeof(int));
-    printf ("sizeof(long) = %d\n", sizeof(long));
-    printf ("sizeof(long int) = %d\n", sizeof(long int));
+    printf ("sizeof(char) = %ld\n", sizeof(char));
+    printf ("sizeof(int) = %ld\n", sizeof(int));
+    printf ("sizeof(long) = %ld\n", sizeof(long));
+    printf ("sizeof(long int) = %ld\n", sizeof(long int));
+    printf ("sizeof(float) = %ld\n", sizeof(float));
+    printf ("sizeof(double) = %ld\n", sizeof(double));
+    printf ("sizeof(long double) = %ld\n", sizeof(long double));
     system("pause");    
     return 0;
     
@@ -23,7 +29,6 @@ int main(void)
     int n = 1;0;
     float x = 10;
     float y = x*x;
-    char* str = "hello";
 
     int tiny, huge;
     
@@ -40,13 +45,12 @@ int main(void)
     
     
 
-    printf("%d\n", sizeof(int));
-    printf("%d\n", sizeof(long long int));
-    printf("%d\n", sizeof(short int));
-    printf("%d\n", sizeof(double));
-    printf("%d\n", sizeof(long double));
+    printf("%ld\n", sizeof(int));
+    printf("%ld\n", sizeof(long long int));
+    printf("%ld\n", sizeof(short int));
+    printf("%ld\n", sizeof(double));
+    printf("%ld\n", sizeof(long double));
 //    printf("%d\n", sizeof(short double));
-    printf("%s\n", str);
     system("pause");    
     
     return 0;

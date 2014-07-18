@@ -120,8 +120,28 @@ int main(void)
     }
 }
 \end{lstlisting}
+
 \NEWLINE
 \quest – Seja n um inteiro entre 1 e 1000. Crie uma função \MAIN\ com um laço (for ou while) que imprime uma mensagem \verb|"%d eh par"| se {\tt n} for par, ou \verb|"%d eh impar"| se {\tt n} for impar, para cada n entre 1 e 1000. No lugar do primeiro \verb|%d| deve aparecer o valor de {\tt n}. Usar if para testar se o módulo de {\tt n} por 2 vale 0, o que indica que {\tt n} é par, ou 1, o que indica que {\tt n} é ímpar. Observe que operador de comparação que testa igualdade em C é o {\tt ==}, diferente do operador de atribuição {\tt =}.
+
+\NEWLINE
+\quest – Seja $v = \sum_{i=0}^{10}i$. Crie uma função \MAIN\ que calcula $v$ usando:
+
+	a) um laço com a palavra reservada \WHILE.
+
+	b) um laço com a palavra reservada \FOR.
+
+\NEWLINE
+\quest – Seja $n$ um número inteiro. Crie uma função main que calcula seu fatorial usando um laço. Qual o maior $n$ de tipo \INT\ que o C é capaz de calcular? E de tipo \LONGINT?
+
+\NEWLINE
+\quest – O número de combinações distintas de $k$ elementos extraídos de um conjunto de $n$ elementos é denotado por $C(n, k)$. Esse valor pode ser calculado pela fórmula $C(n, k) = n! / (k! (n-k)!)$. Seja $n=8$. Crie uma função \MAIN\ que imprime em uma linha todos os valores de $C(n, k)$, com $0 \leq k \leq n$. Sugestão: use um \FOR\ dentro de outro \FOR.
+
+\NEWLINE
+\quest – Crie uma função \MAIN\ que faz o mesmo que o programa anterior para $n=0$ até $n=8$. A saída terá portanto 9 linhas.
+
+\NEWLINE
+\quest – Considere a equação de segundo grau $f = ax^2 + bx + c = 0$. Calcule uma de suas raízes usando o método de Newton. Atribua às variáveis {\tt a}, {\tt b} e {\tt c} os valores dos coeficientes da equação, atribua à variável {\tt x0} um valor de chute inicial, e à variável {\tt epsilon} uma tolerância. A cada passo encontre um novo chute inicial {\tt x0} usando os resultados de $f(x0)$ e $f'(x0)$. O laço pára quando $f(x0)$ for menor que epsilon. Dica: $dx = x0 - x1$ e $ f'(x0) = f(x0) / dx$. 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
