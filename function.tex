@@ -29,7 +29,7 @@ Podemos dizer que a definição de uma função tem cinco partes: identificador 
   printf("%f\n", x);
 \end{lstlisting}
 
-  Observe que \PRINTF\ imprimirá o valor de tipo \DOUBLE\ retornado pela função \SIN. De maneira alternativa, poderíamos colocar a chamada \SIN\ diretamente como parãmetro de \PRINTF.
+  Observe que \PRINTF\ imprimirá o valor de tipo \DOUBLE\ retornado pela função \SIN. De maneira alternativa, poderíamos colocar a chamada \SIN\ diretamente como parâmetro de \PRINTF.
 
 \begin{lstlisting}
   printf("%f\n", sin(a));
@@ -74,7 +74,7 @@ int main(void)
 }
 \end{lstlisting}
 
-Vale notar que o tipo de dado de retorno da função não tem relação com os tipos dos parãmetros. Podem ser completamente diferentes como no exemplo abaixo, que recebe \FLOAT\ como entrada e retorna \INT. A expressão {\tt (int) } executa um {\it typecast}, ou seja, uma conversão de tipo. 
+Vale notar que o tipo de dado de retorno da função não tem relação com os tipos dos parâmetros. Podem ser completamente diferentes como no exemplo abaixo, que recebe \FLOAT\ como entrada e retorna \INT. A expressão {\tt (int) } executa um {\it typecast}, ou seja, uma conversão de tipo. 
 
 \begin{lstlisting}
 #include <stdio.h>
@@ -94,7 +94,7 @@ int main(void)
 
 \section{Passagem de parâmetros por valor}
 
-Quando chamamos uma função, os valores dos parãmetros são copiados para as variáveis definidas na lista de parâmetros. Podemos modificar esses valores no interior da função sem que isso tenha efeito fora dela.
+Quando chamamos uma função, os valores dos parâmetros são copiados para as variáveis definidas na lista de parâmetros. Podemos modificar esses valores no interior da função sem que isso tenha efeito fora dela.
 
 \begin{lstlisting}
 #include <stdio.h>
