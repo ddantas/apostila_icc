@@ -11,7 +11,7 @@
 #include <stdio.h>
 
 #define DEBUG  0
-#define MAXNUM 100
+#define MAXNUM 100000
 
 int main (int argc, char** argv)
 {

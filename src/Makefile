@@ -22,7 +22,7 @@ generate:
 	gcc generate.cpp -o generate
 
 ordena:
-	gcc ordena.cpp -o ordena
+	gcc ordena.cpp -o ordena -lrt
 
 clean:
 	rm -f pause ascii dado primos series generate ordena 
